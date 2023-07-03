@@ -81,8 +81,6 @@ const Otp = ({ route }: any) => {
   };
   const enteredOtp = otp.join('');
   const numericOtp = Number(enteredOtp);
-
-  // Convert countdown value to mm:ss format
   const minutes = Math.floor(countdown / 60);
   const seconds = countdown % 60;
   const formattedCountdown = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;

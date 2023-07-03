@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet ,TouchableOpacity} from 'react-native';
 import { ScrollView } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { TextInput } from 'react-native-paper';
+import SelectDropdown from 'react-native-select-dropdown'
+import Select from '../../assets/Select';
 const BuyCredit = () => {
   const [amount, setAmount] = useState(0);
   const [amountM, setAmountM] = useState(6);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
-
-  const handleAmountChange = (value:any) => {
+  const choose = ["kasibam", "kace acacam", "moyka patronu olucam"]
+  const Emlak = ["evim var", "masinim var"]
+  const handleAmountChange = (value: any) => {
     setAmount(value);
   };
 
-  const handleAmountChangeM = (value:any) => {
+  const handleAmountChangeM = (value: any) => {
     setAmountM(value);
   };
 
@@ -25,7 +28,7 @@ const BuyCredit = () => {
         <Text style={{ fontSize: 35, color: 'black', fontWeight: '600', left: 20 }}>
           Müraciət
         </Text>
-        
+
       </View>
       <View>
         <Text style={{ color: 'black', left: 20, fontSize: 20, marginTop: 30 }}>Məbləğ</Text>
@@ -80,6 +83,71 @@ const BuyCredit = () => {
           mode="outlined"
         />
       </View>
+
+      <SelectDropdown
+      //  renderDropdownIcon={() => (
+       
+      // )}
+      defaultButtonText='Kredit goturme meqsedi'
+        buttonStyle={{ width: 344, marginHorizontal: 20, height: 40, marginTop: 40, backgroundColor: "white", borderColor: "black", borderWidth: 1 }}
+
+
+        data={choose}
+        onSelect={(selectedItem, index) => {
+          console.log(selectedItem, index)
+        }}
+        buttonTextAfterSelection={(selectedItem, index) => {
+     
+          // if data array is an array of objects then return selectedItem.property to render after item is selected
+          return selectedItem
+        }}
+        rowTextForSelection={(item, index) => {
+          return item
+        }}
+        renderDropdownIcon={() => (
+          <Select  size={16} />
+        )}
+      
+      />
+      <SelectDropdown
+    
+      defaultButtonText='Dasinmaz emlak melumatiniz'
+        buttonStyle={{ width: 344, marginHorizontal: 20, height: 40, marginTop: 40, backgroundColor: "white", borderColor: "black", borderWidth: 1 }}
+
+
+        data={Emlak}
+        onSelect={(selectedItem, index) => {
+          console.log(selectedItem, index)
+        }}
+        buttonTextAfterSelection={(selectedItem, index) => {
+     
+          // if data array is an array of objects then return selectedItem.property to render after item is selected
+          return selectedItem
+        }}
+        rowTextForSelection={(item, index) => {
+          return item
+        }}
+        renderDropdownIcon={() => (
+          <Select  size={16} />
+        )}
+      
+      />
+          <TouchableOpacity
+        // onPress={onSubmit}
+        style={{
+          marginHorizontal: 20,
+          backgroundColor: 'blue',
+          paddingVertical: 15,
+          paddingHorizontal: 10,
+          borderRadius: 10,
+          alignItems: 'center',
+          opacity: 0.7,
+          marginTop: 30
+        }}
+      >
+        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Davam et</Text>
+      </TouchableOpacity>
+ 
     </ScrollView>
   );
 };
